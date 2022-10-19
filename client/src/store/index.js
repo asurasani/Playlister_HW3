@@ -247,6 +247,19 @@ export const useGlobalStore = () => {
         }
     }
 
+    store.undoAddSong = async function(index, song){
+        let playlist = this.currentList
+        playlist.songs.splice(index, 0, song);
+
+        let response = await api.updatePlaylistById(playlist._id, playlist);
+        if (response.data.success) {
+            storeReducer({
+                type: GlobalStoreActionType.ADD_SONG,
+                payload: playlist,
+            });
+        }
+    }
+
     store.addSong = async function(){
         let newPlaylist = this.currentList
         let newSong = {
@@ -313,6 +326,12 @@ export const useGlobalStore = () => {
           store,
           store.currentList.songs.length
         );
+        await tps.addTransaction(transaction);
+      };
+
+      store.REMOVESONG_Transaction = async function (index) {
+        let song = store.currentList.songs[index];
+        let transaction = new RemoveSong_Transaction(store, index, song);
         await tps.addTransaction(transaction);
       };
 

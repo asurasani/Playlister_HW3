@@ -11,7 +11,7 @@ function SongCard(props) {
         showEditSongModal(song, index);
     }
     const handleDeleteSong = (event) =>{
-        store.deleteSong(props.index);
+        store.REMOVESONG_Transaction(props.index);
     }
     let cardClass = "list-card unselected-list-card";
     return (
