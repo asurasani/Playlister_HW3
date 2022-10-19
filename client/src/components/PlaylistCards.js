@@ -9,8 +9,10 @@ import { GlobalStoreContext } from '../store'
     @author McKilla Gorilla
 */
 function PlaylistCards() {
+
     const { store } = useContext(GlobalStoreContext);
     store.history = useHistory();
+
 
     return (
         <div id="playlist-cards">

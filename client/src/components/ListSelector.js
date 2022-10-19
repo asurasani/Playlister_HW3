@@ -1,13 +1,14 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom'
 import ListCard from './ListCard.js'
 import { GlobalStoreContext } from '../store'
+import DeleteListModal from "./DeleteListModal";
 /*
     This React component lists all the playlists in the UI.
     
     @author McKilla Gorilla
 */
-const ListSelector = () => {
+const ListSelector = (props) => {
     const { store } = useContext(GlobalStoreContext);
     store.history = useHistory();
 
@@ -18,6 +19,9 @@ const ListSelector = () => {
     function handleCreateNewList() {
         store.createNewList();
     }
+
+   
+
     let listCard = "";
     if (store) {
         listCard = store.idNamePairs.map((pair) => (
@@ -39,11 +43,11 @@ const ListSelector = () => {
                     className="playlister-button"
                     value="+" />
                 Your Lists
-            </div>                {
-                    listCard
-                }
+            </div>                
+            {listCard}
             </div>
-        </div>)
+        </div>
+    )
 }
 
 export default ListSelector;

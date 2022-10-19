@@ -64,10 +64,15 @@ body {
 
 #playlist-selector, #playlist-cards {
   overflow: scroll;
+  height: 80%;
   grid-column: 1 / 3;
   grid-row: 2 / 3;
   display:grid;
   background-color: var(--swatch-primary);
+  font-size: 18pt;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 25px;
 }
 
 .playlister-button, .playlister-button-disabled {
@@ -199,6 +204,31 @@ input {
   background: var(--lightgray);
 }
 
+.modal-north {
+  font-size:28pt;
+  font-weight: bold;
+  background-color: #669966;
+  color:white;
+}
+.modal-center {
+  display: grid;
+  grid-template-columns: 30% 65%;
+  grid-template-rows: 33% 33% 33%;
+  gap: 10px 20px;
+  font-size: 20pt;
+}
+.modal-south {
+  display:flex;
+  flex-direction: row;
+  background-color: lightgray;
+  align-items: center;
+  justify-content: center;
+}
+span {
+  font-weight: bold;
+  font-style: italic;
+}
+
 .modal-header {
   display: flex;
   align-items: center;
@@ -206,13 +236,66 @@ input {
   border-bottom: dotted;
 }
 
+.modal-center-content {
+  grid-column: 1 / 3;
+  grid-row: 1 / 4;
+}
+
+.modal-prompt {  
+  font-size:20pt;
+  font-weight: bold;
+}
+
 .modal-header,
 .modal-close {
   font-size: 1.5rem;
 }
 
+.modal-textfield {
+  font-size:20pt;
+}
+
+.modal-button {
+  font-size: 20pt;
+}
+
+#title-prompt {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+#edit-song-modal-title-textfield {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+#artist-prompt {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+#edit-song-modal-artist-textfield {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+#you-tube-id-prompt {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+}
+
+#edit-song-modal-youTubeId-textfield {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+
+
 .modal p + p {
   margin-top: 1rem;
+}
+
+.modal-button {
+  margin:5px;
 }
 
 .modal-control {

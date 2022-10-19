@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { GlobalStoreContext } from '../store'
 import { useHistory } from 'react-router-dom'
 /*
@@ -9,6 +9,7 @@ import { useHistory } from 'react-router-dom'
 */
 function EditToolbar() {
     const { store } = useContext(GlobalStoreContext);
+    const {add, setAdd} = useState(false);
     const history = useHistory();
 
     let enabledButtonClass = "playlister-button";
@@ -23,6 +24,10 @@ function EditToolbar() {
         history.push("/");
         store.closeCurrentList();
     }
+
+    function handleAdd(){
+        store.addSong();
+    }
     let editStatus = false;
     if (store.isListNameEditActive) {
         editStatus = true;
@@ -35,6 +40,7 @@ function EditToolbar() {
                 disabled={editStatus}
                 value="+"
                 className={enabledButtonClass}
+                onClick={handleAdd}
             />
             <input
                 type="button"
